@@ -1,10 +1,10 @@
-package com.cadenkoehl.galactic_explorers.entity;
+package com.cadenkoehl.blackbeard.entity;
 
-import com.cadenkoehl.galactic_explorers.client.GameClient;
-import com.cadenkoehl.galactic_explorers.client.window.GameFrame;
-import com.cadenkoehl.galactic_explorers.physics.Vec2d;
-import com.cadenkoehl.galactic_explorers.render.Renderer;
-import com.cadenkoehl.galactic_explorers.render.Texture;
+import com.cadenkoehl.blackbeard.client.GameClient;
+import com.cadenkoehl.blackbeard.client.window.GameFrame;
+import com.cadenkoehl.blackbeard.physics.Vec2d;
+import com.cadenkoehl.blackbeard.render.Renderer;
+import com.cadenkoehl.blackbeard.render.Texture;
 
 import java.awt.*;
 

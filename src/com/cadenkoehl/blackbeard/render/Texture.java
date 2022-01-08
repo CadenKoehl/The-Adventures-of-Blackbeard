@@ -1,6 +1,6 @@
-package com.cadenkoehl.galactic_explorers.render;
+package com.cadenkoehl.blackbeard.render;
 
-import com.cadenkoehl.galactic_explorers.entity.Entity;
+import com.cadenkoehl.blackbeard.entity.Entity;
 
 import javax.swing.*;
 import java.awt.*;

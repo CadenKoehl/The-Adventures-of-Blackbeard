@@ -1,4 +1,4 @@
-package com.cadenkoehl.galactic_explorers.util;
+package com.cadenkoehl.blackbeard.util;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

@@ -1,6 +1,6 @@
-package com.cadenkoehl.galactic_explorers.client.window;
+package com.cadenkoehl.blackbeard.client.window;
 
-import com.cadenkoehl.galactic_explorers.client.GalacticExplorers;
+import com.cadenkoehl.blackbeard.client.Blackbeard;
 
 import javax.swing.*;
 
@@ -11,7 +11,7 @@ public class GameFrame extends JFrame {
 
     public GameFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle(GalacticExplorers.TITLE);
+        this.setTitle(Blackbeard.TITLE);
         this.setSize(WIDTH, HEIGHT);
         this.setLocationRelativeTo(null);
     }

@@ -1,10 +1,10 @@
-package com.cadenkoehl.galactic_explorers.client;
+package com.cadenkoehl.blackbeard.client;
 
-import com.cadenkoehl.galactic_explorers.client.window.GameState;
-import com.cadenkoehl.galactic_explorers.entity.spawns.EntitySpawns;
-import com.cadenkoehl.galactic_explorers.render.Renderer;
+import com.cadenkoehl.blackbeard.client.window.GameState;
+import com.cadenkoehl.blackbeard.entity.spawns.EntitySpawns;
+import com.cadenkoehl.blackbeard.render.Renderer;
 
-public class GalacticExplorers extends GameClient {
+public class Blackbeard extends GameClient {
 
     public static final String TITLE = "Galactic Explorers";
 

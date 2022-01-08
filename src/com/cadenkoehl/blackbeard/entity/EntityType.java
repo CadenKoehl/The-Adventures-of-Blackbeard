@@ -1,6 +1,6 @@
-package com.cadenkoehl.galactic_explorers.entity;
+package com.cadenkoehl.blackbeard.entity;
 
-import com.cadenkoehl.galactic_explorers.entity.player.PlayerEntity;
+import com.cadenkoehl.blackbeard.entity.player.PlayerEntity;
 
 import java.util.ArrayList;
 import java.util.HashMap;

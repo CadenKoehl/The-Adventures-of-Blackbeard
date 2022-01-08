@@ -1,10 +1,10 @@
-package com.cadenkoehl.galactic_explorers.entity.spawns;
+package com.cadenkoehl.blackbeard.entity.spawns;
 
-import com.cadenkoehl.galactic_explorers.client.GameClient;
-import com.cadenkoehl.galactic_explorers.entity.Entity;
-import com.cadenkoehl.galactic_explorers.entity.EntityType;
-import com.cadenkoehl.galactic_explorers.physics.Vec2d;
-import com.cadenkoehl.galactic_explorers.util.Util;
+import com.cadenkoehl.blackbeard.client.GameClient;
+import com.cadenkoehl.blackbeard.entity.Entity;
+import com.cadenkoehl.blackbeard.entity.EntityType;
+import com.cadenkoehl.blackbeard.physics.Vec2d;
+import com.cadenkoehl.blackbeard.util.Util;
 
 import java.util.HashMap;
 import java.util.Map;

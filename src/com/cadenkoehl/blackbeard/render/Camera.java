@@ -1,7 +1,7 @@
-package com.cadenkoehl.galactic_explorers.render;
+package com.cadenkoehl.blackbeard.render;
 
-import com.cadenkoehl.galactic_explorers.entity.player.PlayerEntity;
-import com.cadenkoehl.galactic_explorers.physics.Vec2d;
+import com.cadenkoehl.blackbeard.entity.player.PlayerEntity;
+import com.cadenkoehl.blackbeard.physics.Vec2d;
 
 public class Camera {
 

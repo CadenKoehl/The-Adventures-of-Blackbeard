@@ -1,4 +1,4 @@
-package com.cadenkoehl.galactic_explorers.physics;
+package com.cadenkoehl.blackbeard.physics;
 
 public class Vec2d {
 

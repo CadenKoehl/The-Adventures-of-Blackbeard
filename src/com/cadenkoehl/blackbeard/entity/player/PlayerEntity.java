@@ -1,9 +1,9 @@
-package com.cadenkoehl.galactic_explorers.entity.player;
+package com.cadenkoehl.blackbeard.entity.player;
 
-import com.cadenkoehl.galactic_explorers.client.GameClient;
-import com.cadenkoehl.galactic_explorers.client.window.GameState;
-import com.cadenkoehl.galactic_explorers.entity.Entity;
-import com.cadenkoehl.galactic_explorers.render.Renderer;
+import com.cadenkoehl.blackbeard.client.GameClient;
+import com.cadenkoehl.blackbeard.client.window.GameState;
+import com.cadenkoehl.blackbeard.entity.Entity;
+import com.cadenkoehl.blackbeard.render.Renderer;
 
 import java.awt.*;
 

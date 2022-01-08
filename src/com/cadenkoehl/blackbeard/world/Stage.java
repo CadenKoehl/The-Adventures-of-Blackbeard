@@ -1,8 +1,8 @@
-package com.cadenkoehl.galactic_explorers.world;
+package com.cadenkoehl.blackbeard.world;
 
-import com.cadenkoehl.galactic_explorers.entity.Entity;
-import com.cadenkoehl.galactic_explorers.entity.EntityType;
-import com.cadenkoehl.galactic_explorers.physics.Vec2d;
+import com.cadenkoehl.blackbeard.entity.Entity;
+import com.cadenkoehl.blackbeard.entity.EntityType;
+import com.cadenkoehl.blackbeard.physics.Vec2d;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;

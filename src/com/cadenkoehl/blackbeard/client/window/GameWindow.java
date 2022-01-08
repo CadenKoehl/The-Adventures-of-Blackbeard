@@ -1,6 +1,6 @@
-package com.cadenkoehl.galactic_explorers.client.window;
+package com.cadenkoehl.blackbeard.client.window;
 
-import com.cadenkoehl.galactic_explorers.client.GameClient;
+import com.cadenkoehl.blackbeard.client.GameClient;
 
 import javax.swing.*;
 import java.awt.*;
