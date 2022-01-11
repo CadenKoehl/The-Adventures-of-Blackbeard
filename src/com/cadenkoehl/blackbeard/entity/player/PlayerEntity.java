@@ -15,7 +15,7 @@ public class PlayerEntity extends Entity {
 
     @Override
     public void postSpawn() {
-        Renderer.CAMERA.centerOn(this);
+        //Renderer.CAMERA.centerOn(this);
     }
 
     @Override

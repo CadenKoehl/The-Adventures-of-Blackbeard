@@ -1,6 +1,8 @@
 package com.cadenkoehl.blackbeard.entity;
 
+import com.cadenkoehl.blackbeard.entity.enemy.EnemyShipEntity;
 import com.cadenkoehl.blackbeard.entity.player.PlayerEntity;
+import com.cadenkoehl.blackbeard.entity.projectile.ProjectileEntity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,7 +14,8 @@ public class EntityType<E extends Entity> {
     public static final Map<String, EntityType<?>> registries = new HashMap<>();
 
     public static final EntityType<PlayerEntity> PLAYER = register(new EntityType<>("Player", PlayerEntity::new));
-    public static final EntityType<RockEntity> ROCK = register(new EntityType<>("Asteroid", RockEntity::new));
+    public static final EntityType<ProjectileEntity> PROJECTILE = register(new EntityType<>("Projectile", ProjectileEntity::new));
+    public static final EntityType<EnemyShipEntity> ENEMY_SHIP = register(new EntityType<>("Enemy Ship", EnemyShipEntity::new));
 
     public static List<EntityType<?>> values() {
         return new ArrayList<>(registries.values());

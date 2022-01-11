@@ -28,7 +28,8 @@ public abstract class GameClient {
         this.frame = new GameFrame();
         this.window = new GameWindow(frame, this);
         this.stage = new Stage();
-        this.player = stage.spawnEntity(EntityType.PLAYER, new Vec2d(100, 100));
+        this.player = stage.spawnEntity(EntityType.PLAYER, new Vec2d((GameFrame.WIDTH / 2) - 50, 500));
+        stage.spawnEntity(EntityType.ENEMY_SHIP, new Vec2d((GameFrame.WIDTH / 2) - 50, 200));
         this.inputManager = new Input(this);
         frame.setVisible(true);
         frame.add(window);
@@ -82,7 +83,7 @@ public abstract class GameClient {
                 //empty catch block
             }
             try {
-                Thread.sleep(2);
+                Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

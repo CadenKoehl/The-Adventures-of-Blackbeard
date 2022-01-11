@@ -25,6 +25,10 @@ public class Stage {
         return (E) entity;
     }
 
+    public static List<Entity> getEntities() {
+        return entities;
+    }
+
     public void tick() {
         for(Entity entity : entities) {
             entity.tick();
