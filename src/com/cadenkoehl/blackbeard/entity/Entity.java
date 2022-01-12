@@ -2,7 +2,9 @@ package com.cadenkoehl.blackbeard.entity;
 
 import com.cadenkoehl.blackbeard.client.GameClient;
 import com.cadenkoehl.blackbeard.client.window.GameFrame;
+import com.cadenkoehl.blackbeard.entity.player.PlayerEntity;
 import com.cadenkoehl.blackbeard.entity.projectile.ProjectileEntity;
+import com.cadenkoehl.blackbeard.entity.spawns.EntitySpawns;
 import com.cadenkoehl.blackbeard.physics.Direction;
 import com.cadenkoehl.blackbeard.physics.Vec2d;
 import com.cadenkoehl.blackbeard.render.Renderer;
@@ -26,6 +28,7 @@ public class Entity {
     public int health;
     public int shotCooldown;
     public Direction shotDirection;
+    public int kills;
 
     public Entity(String displayName) {
         this.pos = null;
@@ -108,15 +111,28 @@ public class Entity {
         projectile.setSource(this);
     }
 
-    public void damage(int amount) {
+    public void damage(int amount, Entity damager) {
         health = health - amount;
         if(health <= 0) {
             kill();
+            if(damager != null) {
+                if(damager instanceof ProjectileEntity) {
+                    Entity source = ((ProjectileEntity) damager).getSource();
+                    if(source != null) source.kills++;
+                }
+                else {
+                    damager.kills++;
+                }
+            }
         }
     }
 
     public void kill() {
         GameClient.getInstance().getStage().removeEntity(this);
+        if(!(this instanceof ProjectileEntity) && !(this instanceof PlayerEntity)) {
+            GameClient.getInstance().enemyCount--;
+            if(GameClient.getInstance().enemyCount <= 0) EntitySpawns.spawnEnemies();
+        }
     }
 
     public boolean isCollidingWith(Entity entity) {
@@ -165,21 +181,27 @@ public class Entity {
             launchProjectile(shotDirection);
         }
 
-        checkProjectiles();
+        checkCollisions();
 
         if (velocity.x == 0 && velocity.y == 0) return;
 
         updatePos();
     }
 
-    public void checkProjectiles() {
+    public void checkCollisions() {
         if(this instanceof ProjectileEntity) return;
 
         for(Entity entity : Stage.getEntities()) {
-            if(!(entity instanceof ProjectileEntity)) continue;
+            if(!(entity instanceof ProjectileEntity)) {
+                if(this.isCollidingWith(entity)) {
+                    entity.velocity.x = this.velocity.x ;
+                    entity.velocity.y = this.velocity.y;
+                }
+                continue;
+            }
             if(this.isCollidingWith(entity)) {
                 if(!((ProjectileEntity) entity).getSource().equals(this)) {
-                    this.damage(1);
+                    this.damage(1, entity);
                     entity.kill();
                 }
             }

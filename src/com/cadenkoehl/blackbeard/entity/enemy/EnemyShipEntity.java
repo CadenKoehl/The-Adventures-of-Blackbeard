@@ -45,21 +45,17 @@ public class EnemyShipEntity extends Entity {
     }
 
     public void follow(Entity entity) {
-        if(this.pos.x > entity.pos.x) {
-            this.velocity.x = -1;
-            this.velocity.y = 0;
-        }
-        if(this.pos.x < entity.pos.x) {
-            this.velocity.x = 1;
-            this.velocity.y = 0;
-        }
         if(this.pos.y > entity.pos.y) {
             this.velocity.y = -1;
-            this.velocity.x = 0;
         }
         if(this.pos.y < entity.pos.y) {
             this.velocity.y = 1;
-            this.velocity.x = 0;
+        }
+        if(this.pos.x > entity.pos.x) {
+            this.velocity.x = -1;
+        }
+        if(this.pos.x < entity.pos.x) {
+            this.velocity.x = 1;
         }
     }
 

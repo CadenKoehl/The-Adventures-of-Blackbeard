@@ -6,6 +6,7 @@ import com.cadenkoehl.blackbeard.client.window.GameState;
 import com.cadenkoehl.blackbeard.client.window.GameWindow;
 import com.cadenkoehl.blackbeard.entity.EntityType;
 import com.cadenkoehl.blackbeard.entity.player.PlayerEntity;
+import com.cadenkoehl.blackbeard.entity.spawns.EntitySpawns;
 import com.cadenkoehl.blackbeard.physics.Vec2d;
 import com.cadenkoehl.blackbeard.world.Stage;
 
@@ -21,6 +22,7 @@ public abstract class GameClient {
     public Input inputManager;
     public PlayerEntity player;
     public Stage stage;
+    public int enemyCount;
 
     public GameClient() {
         instance = this;
@@ -29,7 +31,7 @@ public abstract class GameClient {
         this.window = new GameWindow(frame, this);
         this.stage = new Stage();
         this.player = stage.spawnEntity(EntityType.PLAYER, new Vec2d((GameFrame.WIDTH / 2) - 50, 500));
-        stage.spawnEntity(EntityType.ENEMY_SHIP, new Vec2d((GameFrame.WIDTH / 2) - 50, 200));
+        EntitySpawns.spawnEnemies();
         this.inputManager = new Input(this);
         frame.setVisible(true);
         frame.add(window);
@@ -63,6 +65,7 @@ public abstract class GameClient {
             g.setColor(Color.WHITE);
             g.setFont(new Font("Comic Sans", Font.PLAIN, 14));
             g.drawString("Health: " + player.health, 50, 50);
+            g.drawString("Kills: " + player.kills, 50, 70);
         }
         else if(state == GameState.DEATH_SCREEN) {
             stage.clear();

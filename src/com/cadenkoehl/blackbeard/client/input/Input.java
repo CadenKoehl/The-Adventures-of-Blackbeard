@@ -11,39 +11,44 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-public record Input(GameClient game) {
+public class Input {
 
     private static boolean mousePressed;
+    private final GameClient game;
+
+    public Input(GameClient game) {
+        this.game = game;
+    }
 
     public void onKeyPressed(KeyEvent event) {
         if(game.state != GameState.GAME) return;
         PlayerEntity player = GameClient.getInstance().getPlayer();
 
         switch (event.getKeyCode()) {
-            case KeyEvent.VK_A -> {
+            case KeyEvent.VK_A:
                 player.velocity.x = -3;
-            }
-            case KeyEvent.VK_D -> {
+                break;
+            case KeyEvent.VK_D:
                 player.velocity.x = 3;
-            }
-            case KeyEvent.VK_W -> {
+                break;
+            case KeyEvent.VK_W:
                 player.velocity.y = -3;
-            }
-            case KeyEvent.VK_S -> {
+                break;
+            case KeyEvent.VK_S:
                 player.velocity.y = 3;
-            }
-            case KeyEvent.VK_UP -> {
+                break;
+            case KeyEvent.VK_UP:
                 player.shotDirection = Direction.UP;
-            }
-            case KeyEvent.VK_DOWN -> {
+                break;
+            case KeyEvent.VK_DOWN:
                 player.shotDirection = Direction.DOWN;
-            }
-            case KeyEvent.VK_LEFT -> {
+                break;
+            case KeyEvent.VK_LEFT:
                 player.shotDirection = Direction.LEFT;
-            }
-            case KeyEvent.VK_RIGHT -> {
+                break;
+            case KeyEvent.VK_RIGHT:
                 player.shotDirection = Direction.RIGHT;
-            }
+                break;
         }
     }
 
@@ -51,29 +56,32 @@ public record Input(GameClient game) {
         if(game.state != GameState.GAME) return;
         PlayerEntity player = GameClient.getInstance().getPlayer();
         switch (event.getKeyCode()) {
-            case KeyEvent.VK_A -> {
-                if(player.velocity.x < 0) {
+            case KeyEvent.VK_A:
+                if (player.velocity.x < 0) {
                     player.velocity.x = 0;
                 }
-            }
-            case KeyEvent.VK_D -> {
-                if(player.velocity.x > 0) {
+                break;
+            case KeyEvent.VK_D:
+                if (player.velocity.x > 0) {
                     player.velocity.x = 0;
                 }
-            }
-            case KeyEvent.VK_W -> {
-                if(player.velocity.y < 0) {
+                break;
+            case KeyEvent.VK_W:
+                if (player.velocity.y < 0) {
                     player.velocity.y = 0;
                 }
-            }
-            case KeyEvent.VK_S -> {
-                if(player.velocity.y > 0) {
+                break;
+            case KeyEvent.VK_S:
+                if (player.velocity.y > 0) {
                     player.velocity.y = 0;
                 }
-            }
-            case KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT -> {
+                break;
+            case KeyEvent.VK_UP:
+            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_RIGHT:
                 player.shotDirection = null;
-            }
+                break;
         }
     }
 
