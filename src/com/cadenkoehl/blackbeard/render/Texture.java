@@ -15,10 +15,10 @@ public class Texture {
     private final int width;
     private final int height;
 
-    public Texture(String filePath, int sizeMultiplier) {
+    public Texture(String filePath, int width, int height) {
         this.path = filePath;
         this.file = new File(filePath);
-        this.icon = this.createIcon(filePath, sizeMultiplier);
+        this.icon = this.createIcon(filePath, width, height);
         this.height = icon.getIconHeight();
         this.width = icon.getIconWidth();
     }
@@ -29,24 +29,11 @@ public class Texture {
         this.width = width;
     }
 
-    public Texture(String filePath) {
-        this(filePath, Entity.SIZE_MULTIPLIER);
-    }
-
-    private ImageIcon createIcon(String filePath, int sizeMultiplier) {
+    private ImageIcon createIcon(String filePath, int width, int height) {
         ImageIcon icon = new ImageIcon(filePath);
 
-        Image scaledImage = icon.getImage().getScaledInstance(icon.getIconWidth() * sizeMultiplier, icon.getIconHeight() * sizeMultiplier, Image.SCALE_SMOOTH);
+        Image scaledImage = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
         return new ImageIcon(scaledImage);
-    }
-
-    public Texture rescale(int newSize) {
-        if(this.icon == null) {
-            return new Texture(color, newSize, newSize);
-        }
-        Texture texture = new Texture(this.path, newSize);
-        texture.setIcon(new ImageIcon(icon.getImage().getScaledInstance(newSize, newSize, Image.SCALE_SMOOTH)));
-        return texture;
     }
 
     public void setIcon(ImageIcon icon) {

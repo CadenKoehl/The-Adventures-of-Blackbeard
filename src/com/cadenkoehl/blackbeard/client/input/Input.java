@@ -17,6 +17,9 @@ public class Input {
     private final GameClient game = GameClient.getInstance();
 
     public void onKeyPressed(KeyEvent event) {
+        if(game.state == GameState.TITLE_SCREEN && event.getKeyCode() == KeyEvent.VK_SPACE) {
+            game.init();
+        }
         if (game.state != GameState.GAME) return;
         PlayerEntity player = GameClient.getInstance().getPlayer();
 
