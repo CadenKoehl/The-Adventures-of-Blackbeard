@@ -46,11 +46,11 @@ public class Entity {
     }
 
     public int getHeight() {
-        return 100;
+        return 50;
     }
 
     public int getWidth() {
-        return 100;
+        return 50;
     }
 
     public int getMaxShotCooldown() {

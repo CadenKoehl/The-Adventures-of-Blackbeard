@@ -11,7 +11,6 @@ public class EnemyShipEntity extends Entity {
 
     public EnemyShipEntity() {
         super("Enemy Ship");
-        this.shotCooldown = 200;
     }
 
     @Override
@@ -19,7 +18,9 @@ public class EnemyShipEntity extends Entity {
         super.tick();
         PlayerEntity player = GameClient.getInstance().getPlayer();
         target(player);
-
+        if(this.pos.y < 100) {
+            velocity.y = 1;
+        }
     }
 
     public void target(Entity entity) {
@@ -40,22 +41,6 @@ public class EnemyShipEntity extends Entity {
             }
         }
         else {
-            follow(entity);
-        }
-    }
-
-    public void follow(Entity entity) {
-        if(this.pos.y > entity.pos.y) {
-            this.velocity.y = -1;
-        }
-        if(this.pos.y < entity.pos.y) {
-            this.velocity.y = 1;
-        }
-        if(this.pos.x > entity.pos.x) {
-            this.velocity.x = -1;
-        }
-        if(this.pos.x < entity.pos.x) {
-            this.velocity.x = 1;
         }
     }
 

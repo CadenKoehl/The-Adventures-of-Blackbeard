@@ -14,14 +14,10 @@ import java.awt.event.MouseEvent;
 public class Input {
 
     private static boolean mousePressed;
-    private final GameClient game;
-
-    public Input(GameClient game) {
-        this.game = game;
-    }
+    private final GameClient game = GameClient.getInstance();
 
     public void onKeyPressed(KeyEvent event) {
-        if(game.state != GameState.GAME) return;
+        if (game.state != GameState.GAME) return;
         PlayerEntity player = GameClient.getInstance().getPlayer();
 
         switch (event.getKeyCode()) {
@@ -53,7 +49,7 @@ public class Input {
     }
 
     public void onKeyReleased(KeyEvent event) {
-        if(game.state != GameState.GAME) return;
+        if (game.state != GameState.GAME) return;
         PlayerEntity player = GameClient.getInstance().getPlayer();
         switch (event.getKeyCode()) {
             case KeyEvent.VK_A:

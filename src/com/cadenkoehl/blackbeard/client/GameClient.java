@@ -32,7 +32,7 @@ public abstract class GameClient {
         this.stage = new Stage();
         this.player = stage.spawnEntity(EntityType.PLAYER, new Vec2d((GameFrame.WIDTH / 2) - 50, 500));
         EntitySpawns.spawnEnemies();
-        this.inputManager = new Input(this);
+        this.inputManager = new Input();
         frame.setVisible(true);
         frame.add(window);
         Runtime.getRuntime().addShutdownHook(new Thread(this::stop, "Shutdown thread"));
