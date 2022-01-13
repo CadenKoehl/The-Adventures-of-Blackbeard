@@ -25,6 +25,7 @@ public abstract class GameClient {
     public PlayerEntity player;
     public Stage stage;
     public int enemyCount;
+    public int difficulty;
 
     public GameClient() {
         instance = this;
@@ -35,6 +36,7 @@ public abstract class GameClient {
         this.inputManager = new Input();
         frame.setVisible(true);
         frame.add(window);
+        difficulty = 2;
         Runtime.getRuntime().addShutdownHook(new Thread(this::stop, "Shutdown thread"));
     }
 
@@ -64,14 +66,19 @@ public abstract class GameClient {
 
             g.setColor(Color.BLACK);
             g.setFont(new Font("Comic Sans", Font.BOLD, 50));
-            g.drawString("Play", (GameFrame.WIDTH / 2) - 50, 300);
+            g.drawString("PLAY", (GameFrame.WIDTH / 2) - 50, 300);
             g.setFont(new Font("Comic Sans", Font.BOLD, 15));
             g.drawString("[SPACE]", (GameFrame.WIDTH / 2) - 33, 330);
+
+            String difficulty = "";
+            if(this.difficulty == 1) difficulty = "Difficulty: EASY";
+            if(this.difficulty == 2) difficulty = "Difficulty: NORMAL";
+            if(this.difficulty == 3) difficulty = "Difficulty: HARD";
+
+            g.drawString(difficulty, (GameFrame.WIDTH / 2) - 50, 500);
+
         }
         if(state == GameState.GAME) {
-            Renderer.render(Textures.OCEAN_BACKGROUND, 0,0);
-            g.setColor(new Color(0xC975CEFF, true));
-            g.fillRect(0,0, GameFrame.WIDTH, GameFrame.HEIGHT);
             stage.render();
             g.setColor(Color.WHITE);
             g.setFont(new Font("Comic Sans", Font.PLAIN, 14));
