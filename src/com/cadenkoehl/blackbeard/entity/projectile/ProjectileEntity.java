@@ -4,8 +4,6 @@ import com.cadenkoehl.blackbeard.entity.Entity;
 import com.cadenkoehl.blackbeard.render.Texture;
 import com.cadenkoehl.blackbeard.render.Textures;
 
-import java.awt.*;
-
 public class ProjectileEntity extends Entity {
 
     private Entity source;

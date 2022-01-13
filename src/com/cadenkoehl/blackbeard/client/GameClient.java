@@ -69,6 +69,9 @@ public abstract class GameClient {
             g.drawString("[SPACE]", (GameFrame.WIDTH / 2) - 33, 330);
         }
         if(state == GameState.GAME) {
+            Renderer.render(Textures.OCEAN_BACKGROUND, 0,0);
+            g.setColor(new Color(0xC975CEFF, true));
+            g.fillRect(0,0, GameFrame.WIDTH, GameFrame.HEIGHT);
             stage.render();
             g.setColor(Color.WHITE);
             g.setFont(new Font("Comic Sans", Font.PLAIN, 14));

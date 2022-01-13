@@ -2,10 +2,13 @@ package com.cadenkoehl.blackbeard.entity.enemy;
 
 import com.cadenkoehl.blackbeard.client.GameClient;
 import com.cadenkoehl.blackbeard.entity.Entity;
+import com.cadenkoehl.blackbeard.entity.EntityType;
 import com.cadenkoehl.blackbeard.entity.player.PlayerEntity;
+import com.cadenkoehl.blackbeard.entity.projectile.ProjectileEntity;
 import com.cadenkoehl.blackbeard.physics.Direction;
 import com.cadenkoehl.blackbeard.render.Texture;
 import com.cadenkoehl.blackbeard.render.Textures;
+import com.cadenkoehl.blackbeard.world.Stage;
 
 import java.awt.*;
 
@@ -13,13 +16,12 @@ public class EnemyShipEntity extends Entity {
 
     public EnemyShipEntity() {
         super("Enemy Ship");
+        this.shotDirection = Direction.DOWN;
     }
 
     @Override
     public void tick() {
         super.tick();
-        PlayerEntity player = GameClient.getInstance().getPlayer();
-        target(player);
         if(this.pos.y < 100) {
             velocity.y = 1;
         }
@@ -28,26 +30,6 @@ public class EnemyShipEntity extends Entity {
         }
     }
 
-    public void target(Entity entity) {
-        if(isCollidingWithX(entity)) {
-            if(this.pos.y > entity.pos.y) {
-                this.shotDirection = Direction.UP;
-            }
-            if(this.pos.y < entity.pos.y) {
-                this.shotDirection = Direction.DOWN;
-            }
-        }
-        else if(isCollidingWithY(entity)) {
-            if(this.pos.x > entity.pos.x) {
-                this.shotDirection = Direction.LEFT;
-            }
-            if(this.pos.x < entity.pos.x) {
-                this.shotDirection = Direction.RIGHT;
-            }
-        }
-        else {
-        }
-    }
 
     @Override
     public int getMaxShotCooldown() {

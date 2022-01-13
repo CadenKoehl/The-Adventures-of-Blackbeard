@@ -15,7 +15,8 @@ public class EntitySpawns {
     public static final List<EntityType<?>> commonSpawns = new ArrayList<>();
 
     static {
-        commonSpawns.add(EntityType.ENEMY_SHIP);
+        commonSpawns.add(EntityType.SMART_SHIP);
+        commonSpawns.add(EntityType.SPREAD_SHIP);
     }
 
     public static void spawnEnemies() {
