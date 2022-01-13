@@ -13,13 +13,12 @@ import com.cadenkoehl.blackbeard.world.Stage;
 
 import java.awt.*;
 
-public class Entity {
+public abstract class Entity {
 
     public static final int SIZE_MULTIPLIER = 1;
 
     public Vec2d pos;
     public Vec2d velocity;
-    private final Texture texture;
     private final String displayName;
     private final String name;
     public long ticksLived;
@@ -36,9 +35,8 @@ public class Entity {
         this.velocity = new Vec2d(0, 0);
         this.displayName = displayName;
         this.name = displayName.replace(" ", "_").toLowerCase();
-        this.texture = new Texture(getColor(), getHeight(), getWidth());
-        this.height = texture.getHeight();
-        this.width = texture.getWidth();
+        this.height = getTexture().getHeight();
+        this.width = getTexture().getWidth();
     }
 
     public Color getColor() {
@@ -46,11 +44,11 @@ public class Entity {
     }
 
     public int getHeight() {
-        return 50;
+        return height;
     }
 
     public int getWidth() {
-        return 50;
+        return width;
     }
 
     public int getMaxShotCooldown() {
@@ -158,9 +156,7 @@ public class Entity {
         return 0;
     }
 
-    public Texture getTexture() {
-        return texture;
-    }
+    public abstract Texture getTexture();
 
     public String getDisplayName() {
         return displayName;

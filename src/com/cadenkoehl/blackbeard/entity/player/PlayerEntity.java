@@ -3,7 +3,8 @@ package com.cadenkoehl.blackbeard.entity.player;
 import com.cadenkoehl.blackbeard.client.GameClient;
 import com.cadenkoehl.blackbeard.client.window.GameState;
 import com.cadenkoehl.blackbeard.entity.Entity;
-import com.cadenkoehl.blackbeard.render.Renderer;
+import com.cadenkoehl.blackbeard.render.Texture;
+import com.cadenkoehl.blackbeard.render.Textures;
 
 import java.awt.*;
 
@@ -23,6 +24,11 @@ public class PlayerEntity extends Entity {
         super.kill();
         GameClient.getInstance().state = GameState.DEATH_SCREEN;
         GameClient.getInstance().getWindow().repaint();
+    }
+
+    @Override
+    public Texture getTexture() {
+        return Textures.PLAYER;
     }
 
     @Override

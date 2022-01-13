@@ -7,6 +7,8 @@ import com.cadenkoehl.blackbeard.entity.spawns.EntitySpawns;
 import com.cadenkoehl.blackbeard.physics.Vec2d;
 import com.cadenkoehl.blackbeard.world.Stage;
 
+import java.awt.*;
+
 public class Blackbeard extends GameClient {
 
     public static final String TITLE = "Galactic Explorers";
@@ -17,6 +19,7 @@ public class Blackbeard extends GameClient {
         this.stage = new Stage();
         this.player = stage.spawnEntity(EntityType.PLAYER, new Vec2d((GameFrame.WIDTH / 2) - 50, 500));
         EntitySpawns.spawnEnemies();
+        this.getWindow().setBackground(new Color(0x75CEFF));
         new Thread(this::startGameLoop, "Game thread").start();
     }
 

@@ -4,6 +4,8 @@ import com.cadenkoehl.blackbeard.client.GameClient;
 import com.cadenkoehl.blackbeard.entity.Entity;
 import com.cadenkoehl.blackbeard.entity.player.PlayerEntity;
 import com.cadenkoehl.blackbeard.physics.Direction;
+import com.cadenkoehl.blackbeard.render.Texture;
+import com.cadenkoehl.blackbeard.render.Textures;
 
 import java.awt.*;
 
@@ -20,6 +22,9 @@ public class EnemyShipEntity extends Entity {
         target(player);
         if(this.pos.y < 100) {
             velocity.y = 1;
+        }
+        else {
+            velocity.y = 0;
         }
     }
 
@@ -57,5 +62,10 @@ public class EnemyShipEntity extends Entity {
     @Override
     public int getStartHealth() {
         return 4;
+    }
+
+    @Override
+    public Texture getTexture() {
+        return Textures.ENEMY_SHIP;
     }
 }

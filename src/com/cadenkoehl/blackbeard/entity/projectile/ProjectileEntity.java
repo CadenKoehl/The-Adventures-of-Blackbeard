@@ -2,6 +2,7 @@ package com.cadenkoehl.blackbeard.entity.projectile;
 
 import com.cadenkoehl.blackbeard.entity.Entity;
 import com.cadenkoehl.blackbeard.render.Texture;
+import com.cadenkoehl.blackbeard.render.Textures;
 
 import java.awt.*;
 
@@ -32,17 +33,7 @@ public class ProjectileEntity extends Entity {
     }
 
     @Override
-    public Color getColor() {
-        return Color.YELLOW;
-    }
-
-    @Override
-    public int getHeight() {
-        return 10;
-    }
-
-    @Override
-    public int getWidth() {
-        return 10;
+    public Texture getTexture() {
+        return Textures.ROCK;
     }
 }

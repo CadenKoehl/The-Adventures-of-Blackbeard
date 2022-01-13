@@ -81,7 +81,6 @@ public abstract class GameClient {
             g.setFont(new Font("Comic Sans", Font.PLAIN, 50));
             g.drawString("YOU DIED", 360, 270);
         }
-        window.setBackground(Color.BLACK);
     }
 
     public void startGameLoop() {
