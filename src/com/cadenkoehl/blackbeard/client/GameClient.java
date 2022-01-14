@@ -66,16 +66,18 @@ public abstract class GameClient {
 
             g.setColor(Color.BLACK);
             g.setFont(new Font("Comic Sans", Font.BOLD, 50));
-            g.drawString("PLAY", (GameFrame.WIDTH / 2) - 50, 300);
+            g.drawString("PLAY", (GameFrame.WIDTH / 2) - 70, 300);
             g.setFont(new Font("Comic Sans", Font.BOLD, 15));
-            g.drawString("[SPACE]", (GameFrame.WIDTH / 2) - 33, 330);
+            g.drawString("[SPACE]", (GameFrame.WIDTH / 2) - 30, 330);
+
+            g.setFont(new Font("Comic Sans", Font.BOLD, 25));
 
             String difficulty = "";
             if(this.difficulty == 1) difficulty = "Difficulty: EASY";
             if(this.difficulty == 2) difficulty = "Difficulty: NORMAL";
             if(this.difficulty == 3) difficulty = "Difficulty: HARD";
 
-            g.drawString(difficulty, (GameFrame.WIDTH / 2) - 50, 500);
+            g.drawString(difficulty, (GameFrame.WIDTH / 2) - 125, 400);
 
         }
         if(state == GameState.GAME) {
@@ -87,9 +89,11 @@ public abstract class GameClient {
         }
         else if(state == GameState.DEATH_SCREEN) {
             stage.clear();
-            g.setColor(Color.RED);
-            g.setFont(new Font("Comic Sans", Font.PLAIN, 50));
-            g.drawString("YOU DIED", 360, 270);
+            Renderer.render(Textures.MENU_BACKGROUND, 0,0);
+            g.setFont(new Font("Comic Sans", Font.BOLD, 50));
+            g.drawString("YOU DIED", (GameFrame.WIDTH / 2) - 120, 300);
+            g.setFont(new Font("Comic Sans", Font.BOLD, 15));
+            g.drawString("[PRESS SPACE TO CONTINUE]", (GameFrame.WIDTH / 2) - 106, 330);
         }
     }
 
