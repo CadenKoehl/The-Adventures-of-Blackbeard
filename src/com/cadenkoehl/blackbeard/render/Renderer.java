@@ -1,13 +1,13 @@
 package com.cadenkoehl.blackbeard.render;
 
-import com.cadenkoehl.blackbeard.client.window.GameWindow;
+import com.cadenkoehl.blackbeard.game.window.GameWindow;
 import com.cadenkoehl.blackbeard.entity.Entity;
 
 import javax.swing.*;
 
 import java.awt.*;
 
-import static com.cadenkoehl.blackbeard.client.window.GameWindow.GRAPHICS;
+import static com.cadenkoehl.blackbeard.game.window.GameWindow.GRAPHICS;
 
 public class Renderer {
 

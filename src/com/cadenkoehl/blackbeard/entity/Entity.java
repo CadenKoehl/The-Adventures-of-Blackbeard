@@ -1,10 +1,14 @@
 package com.cadenkoehl.blackbeard.entity;
 
-import com.cadenkoehl.blackbeard.client.GameClient;
-import com.cadenkoehl.blackbeard.client.window.GameFrame;
+import com.cadenkoehl.blackbeard.entity.enemy.SharkEntity;
+import com.cadenkoehl.blackbeard.game.GameClient;
+import com.cadenkoehl.blackbeard.game.WaveManager;
+import com.cadenkoehl.blackbeard.game.window.GameFrame;
 import com.cadenkoehl.blackbeard.entity.player.PlayerEntity;
 import com.cadenkoehl.blackbeard.entity.projectile.ProjectileEntity;
-import com.cadenkoehl.blackbeard.entity.spawns.EntitySpawns;
+import com.cadenkoehl.blackbeard.game.GameState;
+import com.cadenkoehl.blackbeard.game.window.GameWindow;
+import com.cadenkoehl.blackbeard.item.Items;
 import com.cadenkoehl.blackbeard.physics.Direction;
 import com.cadenkoehl.blackbeard.physics.Vec2d;
 import com.cadenkoehl.blackbeard.render.Renderer;
@@ -35,8 +39,8 @@ public abstract class Entity {
         this.velocity = new Vec2d(0, 0);
         this.displayName = displayName;
         this.name = displayName.replace(" ", "_").toLowerCase();
-        this.height = getTexture().getHeight();
-        this.width = getTexture().getWidth();
+        this.height = getHeight();
+        this.width = getWidth();
     }
 
     public Color getColor() {
@@ -44,21 +48,25 @@ public abstract class Entity {
     }
 
     public int getHeight() {
-        return height;
+        return getTexture().getHeight();
     }
 
     public int getWidth() {
-        return width;
+        return getTexture().getWidth();
     }
 
     public int getMaxShotCooldown() {
         return 25;
     }
 
+    public int getBaseShotSpeed() {
+        return 2;
+    }
+
     public void render() {
         Renderer.render(this, pos.x, pos.y);
     }
-
+ 
     public boolean inFrame() {
         return this.pos.y - Renderer.CAMERA.offset.y > -50 &&
                 this.pos.y - Renderer.CAMERA.offset.y < 570 &&
@@ -77,6 +85,7 @@ public abstract class Entity {
         if(shotCooldown != 0) return;
 
         shotCooldown = this.getMaxShotCooldown();
+        int speed = this.getBaseShotSpeed();
 
         Vec2d pos = new Vec2d(0,0);
         Vec2d velocity = new Vec2d(0,0);
@@ -85,22 +94,22 @@ public abstract class Entity {
         if(direction == Direction.UP) {
             pos.x = this.pos.x + (this.width /2);
             pos.y = this.pos.y;
-            velocity.y = -6;
+            velocity.y = -speed;
         }
         if(direction == Direction.DOWN) {
             pos.x = this.pos.x + (this.width /2);
             pos.y = this.pos.y + (this.height / 2);
-            velocity.y = 6;
+            velocity.y = speed;
         }
         if(direction == Direction.LEFT) {
             pos.y = this.pos.y + (this.height /2);
             pos.x = this.pos.x;
-            velocity.x = -6;
+            velocity.x = -speed;
         }
         if(direction == Direction.RIGHT) {
             pos.x = this.pos.x + this.width;
             pos.y = this.pos.y + (this.height / 2);
-            velocity.x = 6;
+            velocity.x = speed;
         }
 
         ProjectileEntity projectile = GameClient.getInstance().getStage().spawnEntity(EntityType.PROJECTILE, pos);
@@ -126,10 +135,11 @@ public abstract class Entity {
     }
 
     public void kill() {
-        GameClient.getInstance().getStage().removeEntity(this);
+        GameClient game = GameClient.getInstance();
+        game.getStage().removeEntity(this);
         if(!(this instanceof ProjectileEntity) && !(this instanceof PlayerEntity)) {
-            GameClient.getInstance().enemyCount--;
-            if(GameClient.getInstance().enemyCount <= 0) EntitySpawns.spawnEnemies();
+            game.enemyCount--;
+            if(game.enemyCount <= 0) WaveManager.nextWave();
         }
     }
 
@@ -189,14 +199,19 @@ public abstract class Entity {
 
         for(Entity entity : Stage.getEntities()) {
             if(!(entity instanceof ProjectileEntity)) {
-                if(this.isCollidingWith(entity)) {
-                    entity.velocity.x = this.velocity.x ;
-                    entity.velocity.y = this.velocity.y;
+                if(this instanceof PlayerEntity) {
+                    if(this != entity && this.isCollidingWith(entity)) {
+                        if(entity instanceof SharkEntity) {
+                            this.damage(1, entity);
+                        }
+                    }
                 }
                 continue;
             }
             if(this.isCollidingWith(entity)) {
-                if(!((ProjectileEntity) entity).getSource().equals(this)) {
+                Entity source = ((ProjectileEntity) entity).getSource();
+                if(!source.equals(this)) {
+                    if(!(source instanceof PlayerEntity) && !(this instanceof PlayerEntity)) continue;
                     this.damage(1, entity);
                     entity.kill();
                 }
@@ -209,7 +224,7 @@ public abstract class Entity {
         updatePosY();
     }
     private void updatePosX() {
-        if(velocity.x > 0 && pos.x >= (GameFrame.WIDTH - (this.width * 1.1))) {
+        if(velocity.x > 0 && pos.x >= (GameFrame.WIDTH - (getTexture().getWidth() * 1.1))) {
             velocity.x = 0;
             if(this instanceof ProjectileEntity) kill();
             return;
@@ -222,7 +237,7 @@ public abstract class Entity {
         setPos(new Vec2d(pos.x + velocity.x, pos.y));
     }
     private void updatePosY() {
-        if(velocity.y > 0 && pos.y >= (GameFrame.HEIGHT - (this.height * 1.4))) {
+        if(velocity.y > 0 && pos.y >= (GameFrame.HEIGHT - (getTexture().getHeight() * 1.4))) {
             velocity.y = 0;
             if(this instanceof ProjectileEntity) kill();
             return;
@@ -231,6 +246,15 @@ public abstract class Entity {
             velocity.y = 0;
             if(this instanceof ProjectileEntity) kill();
             return;
+        }
+        if(velocity.y < 0 && pos.y <= 400) {
+            GameClient game = GameClient.getInstance();
+            if(this instanceof PlayerEntity && game.dayComplete) {
+                game.stage.clear();
+                game.state = GameState.TREASURE_BOX;
+                game.item = Items.randomItem();
+                GameWindow.INSTANCE.repaint();
+            }
         }
         setPos(new Vec2d(pos.x, pos.y + velocity.y));
     }

@@ -1,7 +1,5 @@
 package com.cadenkoehl.blackbeard.render;
 
-import com.cadenkoehl.blackbeard.entity.Entity;
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -21,6 +19,7 @@ public class Texture {
         this.icon = this.createIcon(filePath, width, height);
         this.height = icon.getIconHeight();
         this.width = icon.getIconWidth();
+        System.out.println("Loading texture " + filePath);
     }
 
     public Texture(Color color, int height, int width) {

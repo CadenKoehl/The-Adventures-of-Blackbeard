@@ -1,5 +1,7 @@
 package com.cadenkoehl.blackbeard.util;
 
+import com.cadenkoehl.blackbeard.physics.Vec2d;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;

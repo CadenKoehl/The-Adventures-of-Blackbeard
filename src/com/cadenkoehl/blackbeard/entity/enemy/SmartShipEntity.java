@@ -1,6 +1,6 @@
 package com.cadenkoehl.blackbeard.entity.enemy;
 
-import com.cadenkoehl.blackbeard.client.GameClient;
+import com.cadenkoehl.blackbeard.game.GameClient;
 import com.cadenkoehl.blackbeard.entity.Entity;
 import com.cadenkoehl.blackbeard.entity.player.PlayerEntity;
 import com.cadenkoehl.blackbeard.physics.Direction;
@@ -31,30 +31,30 @@ public class SmartShipEntity extends EnemyShipEntity {
                 this.shotDirection = Direction.RIGHT;
             }
         }
-        follow(entity);
+        follow(entity, 1);
     }
-    public void follow(Entity entity) {
+    public void follow(Entity entity, int speed) {
         if(this.pos.x > entity.pos.x) {
-            this.velocity.x = -1;
+            this.velocity.x = -speed;
             this.velocity.y = 0;
         }
         if(this.pos.x < entity.pos.x) {
-            this.velocity.x = 1;
+            this.velocity.x = speed;
             this.velocity.y = 0;
         }
         if(this.pos.y > entity.pos.y) {
-            this.velocity.y = -1;
-            this.velocity.x = 0;
+            this.velocity.y = -speed;
+            this.velocity.x = speed;
         }
         if(this.pos.y < entity.pos.y) {
-            this.velocity.y = 1;
+            this.velocity.y = speed;
             this.velocity.x = 0;
         }
         if(this.pos.x > entity.pos.x) {
-            this.velocity.x = -1;
+            this.velocity.x = -speed;
         }
         if(this.pos.x < entity.pos.x) {
-            this.velocity.x = 1;
+            this.velocity.x = speed;
         }
     }
 }

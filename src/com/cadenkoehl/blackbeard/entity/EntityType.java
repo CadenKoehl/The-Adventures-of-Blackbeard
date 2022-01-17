@@ -1,8 +1,10 @@
 package com.cadenkoehl.blackbeard.entity;
 
 import com.cadenkoehl.blackbeard.entity.enemy.EnemyShipEntity;
+import com.cadenkoehl.blackbeard.entity.enemy.SharkEntity;
 import com.cadenkoehl.blackbeard.entity.enemy.SmartShipEntity;
 import com.cadenkoehl.blackbeard.entity.enemy.SpreadShipEntity;
+import com.cadenkoehl.blackbeard.entity.land.IslandEntity;
 import com.cadenkoehl.blackbeard.entity.player.PlayerEntity;
 import com.cadenkoehl.blackbeard.entity.projectile.ProjectileEntity;
 
@@ -19,6 +21,8 @@ public class EntityType<E extends Entity> {
     public static final EntityType<ProjectileEntity> PROJECTILE = register(new EntityType<>("Projectile", ProjectileEntity::new));
     public static final EntityType<SpreadShipEntity> SPREAD_SHIP = register(new EntityType<>("Spread Ship", SpreadShipEntity::new));
     public static final EntityType<SmartShipEntity> SMART_SHIP = register(new EntityType<>("Smart Ship", SmartShipEntity::new));
+    public static final EntityType<SharkEntity> SHARK = register(new EntityType<>("Shark", SharkEntity::new));
+    public static final EntityType<IslandEntity> ISLAND = register(new EntityType<>("Island", IslandEntity::new));
 
     public static List<EntityType<?>> values() {
         return new ArrayList<>(registries.values());

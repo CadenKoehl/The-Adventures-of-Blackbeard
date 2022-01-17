@@ -31,6 +31,16 @@ public class ProjectileEntity extends Entity {
     }
 
     @Override
+    public int getHeight() {
+        return 5;
+    }
+
+    @Override
+    public int getWidth() {
+        return 5;
+    }
+
+    @Override
     public Texture getTexture() {
         return Textures.ROCK;
     }

@@ -1,6 +1,6 @@
 package com.cadenkoehl.blackbeard;
 
-import com.cadenkoehl.blackbeard.client.Blackbeard;
+import com.cadenkoehl.blackbeard.game.Blackbeard;
 
 public class Main {
 
