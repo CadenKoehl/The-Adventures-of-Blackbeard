@@ -3,6 +3,7 @@ package com.cadenkoehl.blackbeard.entity.player;
 import com.cadenkoehl.blackbeard.game.GameClient;
 import com.cadenkoehl.blackbeard.game.GameState;
 import com.cadenkoehl.blackbeard.entity.Entity;
+import com.cadenkoehl.blackbeard.game.input.Input;
 import com.cadenkoehl.blackbeard.render.Texture;
 import com.cadenkoehl.blackbeard.render.Textures;
 
@@ -24,14 +25,19 @@ public class PlayerEntity extends Entity {
     @Override
     public void tick() {
         super.tick();
-        if(damageTicks > 0) damageTicks--;
+        if(damageTicks > 0) {
+            damageTicks--;
+        }
     }
+
 
     @Override
     public void damage(int amount, Entity damager) {
         if(damageTicks != 0) return;
-        damageTicks = 200;
-        super.damage(amount, damager);
+        if(GameClient.getInstance().difficulty != 3) {
+            damageTicks = 200 / GameClient.getInstance().difficulty;
+        }
+        super.damage(amount * GameClient.getInstance().difficulty, damager);
     }
 
     @Override
@@ -48,7 +54,7 @@ public class PlayerEntity extends Entity {
 
     @Override
     public int getHeight() {
-        return 25;
+        return 35;
     }
 
     @Override

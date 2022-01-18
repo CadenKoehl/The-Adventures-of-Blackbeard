@@ -1,9 +1,17 @@
 package com.cadenkoehl.blackbeard.render;
 
+import com.cadenkoehl.blackbeard.game.GameClient;
+
 public class Textures {
 
-    public static Texture MENU_BACKGROUND;
-    public static Texture SCROLL;
+    //Menu
+    public static Texture INTRO;
+    public static Texture TITLE_SCREEN;
+    public static Texture DEATH;
+    public static Texture NORMAL;
+    public static Texture HARD;
+    public static Texture BRUTAL;
+
     public static Texture OCEAN_BACKGROUND;
     public static Texture PLAYER;
     public static Texture ENEMY_SHIP;
@@ -17,8 +25,12 @@ public class Textures {
 
     public static void initTextures() {
         System.out.println("Initializing textures...");
-        MENU_BACKGROUND = new Texture("resources/background.png", 1000,1000);
-        SCROLL = new Texture("resources/scroll.png", 1000,1000);
+        INTRO = new Texture("resources/intro.gif", 1000, 1000);
+        TITLE_SCREEN = new Texture("resources/title_screen.png", 1000, 1000);
+        DEATH = new Texture("resources/death.png", 1000, 1000);
+        NORMAL = new Texture("resources/normal.png", 1000, 1000);
+        HARD = new Texture("resources/hard.png", 1000, 1000);
+        BRUTAL = new Texture("resources/brutal.png", 1000, 1000);
         OCEAN_BACKGROUND = new Texture("resources/ocean_background.png", 1000, 1000);
         PLAYER = new Texture("resources/player_ship.png", 50, 75);
         ENEMY_SHIP = new Texture("resources/enemy_ship.png", 50, 75);

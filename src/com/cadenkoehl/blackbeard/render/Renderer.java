@@ -1,5 +1,6 @@
 package com.cadenkoehl.blackbeard.render;
 
+import com.cadenkoehl.blackbeard.game.GameClient;
 import com.cadenkoehl.blackbeard.game.window.GameWindow;
 import com.cadenkoehl.blackbeard.entity.Entity;
 
@@ -24,6 +25,10 @@ public class Renderer {
         }
         else {
             icon.paintIcon(GameWindow.INSTANCE, GRAPHICS, x - CAMERA.offset.x, y - CAMERA.offset.y);
+        }
+        if(GameClient.getInstance().hitboxes) {
+            GRAPHICS.setColor(Color.WHITE);
+            GRAPHICS.drawRect(entity.getHitboxX(), entity.getHitboxY(), entity.width, entity.height);
         }
     }
 

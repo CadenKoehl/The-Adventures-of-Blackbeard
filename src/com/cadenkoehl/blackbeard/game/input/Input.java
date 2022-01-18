@@ -16,11 +16,31 @@ public class Input {
     private static boolean mousePressed;
     private final GameClient game = GameClient.getInstance();
 
+    public static boolean spaceBar;
+
     public void onKeyPressed(KeyEvent event) {
+        if(game.state == GameState.INTRO) {
+            if(event.getKeyCode() == KeyEvent.VK_SPACE) {
+                game.state = GameState.TITLE_SCREEN  ;
+                GameWindow.INSTANCE.repaint();
+                return;
+            }
+        }
         if(game.state == GameState.TITLE_SCREEN) {
+            if(event.getKeyCode() == KeyEvent.VK_SPACE) {
+                game.state = GameState.DIFFICULTY_SELECT;
+                GameWindow.INSTANCE.repaint();
+                return;
+            }
+        }
+        if(game.state == GameState.DIFFICULTY_SELECT) {
             switch(event.getKeyCode()) {
                 case KeyEvent.VK_SPACE:
                     game.init();
+                    break;
+
+                case KeyEvent.VK_ESCAPE:
+                    game.state = GameState.TITLE_SCREEN;
                     break;
 
                 case KeyEvent.VK_UP:
@@ -33,6 +53,7 @@ public class Input {
                     if(game.difficulty > 1) {
                         game.difficulty--;
                     }
+                    break;
             }
             GameWindow.INSTANCE.repaint();
         }
@@ -74,6 +95,12 @@ public class Input {
             case KeyEvent.VK_UP:
                 player.shotDirection = Direction.UP;
                 break;
+            case KeyEvent.VK_SPACE:
+                spaceBar = true;
+                break;
+            case KeyEvent.VK_B:
+                game.hitboxes = !game.hitboxes;
+                break;
         }
     }
 
@@ -100,6 +127,9 @@ public class Input {
                 if (player.velocity.y > 0) {
                     player.velocity.y = 0;
                 }
+                break;
+            case KeyEvent.VK_SPACE:
+                spaceBar = false;
                 break;
             case KeyEvent.VK_UP:
             case KeyEvent.VK_DOWN:

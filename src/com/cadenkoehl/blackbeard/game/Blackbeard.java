@@ -11,7 +11,6 @@ public class Blackbeard extends GameClient {
 
     //TODO
     //Fix shark AI
-    //W Input bug
     //Slow key [space]
     //Hitbox fix
 
@@ -22,6 +21,8 @@ public class Blackbeard extends GameClient {
         this.state = GameState.GAME;
         this.stage = new Stage();
         stage.spawnEntity(player);
+        player.velocity.x = 0;
+        player.velocity.y = 0;
         this.day++;
         this.wave = 0;
         this.enemyCount = 0;

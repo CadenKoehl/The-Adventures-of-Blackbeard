@@ -42,6 +42,16 @@ public class EnemyShipEntity extends Entity {
     }
 
     @Override
+    public int getWidth() {
+        return 25;
+    }
+
+    @Override
+    public int getHeight() {
+        return 25;
+    }
+
+    @Override
     public Texture getTexture() {
         return Textures.ENEMY_SHIP;
     }

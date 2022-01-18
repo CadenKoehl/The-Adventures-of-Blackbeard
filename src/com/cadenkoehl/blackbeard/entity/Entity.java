@@ -47,6 +47,13 @@ public abstract class Entity {
         return null;
     }
 
+    public int getHitboxX() {
+        return pos.x + ((getTexture().getWidth() - width) / 2);
+    }
+    public int getHitboxY() {
+        return pos.y + ((getTexture().getHeight() - height) / 2);
+    }
+
     public int getHeight() {
         return getTexture().getHeight();
     }
@@ -144,18 +151,18 @@ public abstract class Entity {
     }
 
     public boolean isCollidingWith(Entity entity) {
-        return entity.pos.x < this.pos.x + this.width &&
-                entity.pos.x + entity.width > this.pos.x &&
-                entity.pos.y < this.pos.y + this.height &&
-                entity.health + entity.pos.y > this.pos.y;
+        return entity.getHitboxX() < this.getHitboxX() + this.width &&
+                entity.getHitboxX() + entity.width > this.getHitboxX() &&
+                entity.getHitboxY() < this.getHitboxY() + this.height &&
+                entity.health + entity.getHitboxY() > this.getHitboxY();
     }
     public boolean isCollidingWithX(Entity entity) {
-        return entity.pos.x < this.pos.x + this.width &&
-                entity.pos.x + entity.width > this.pos.x;
+        return entity.getHitboxX() < this.getHitboxX() + this.width &&
+                entity.getHitboxX() + entity.width > this.getHitboxX();
     }
     public boolean isCollidingWithY(Entity entity) {
-        return entity.pos.y < this.pos.y + this.height &&
-                entity.health + entity.pos.y > this.pos.y;
+        return entity.getHitboxY() < this.getHitboxY() + this.height &&
+                entity.health + entity.getHitboxY() > this.getHitboxY();
     }
 
     public void setPos(Vec2d pos) {
@@ -199,10 +206,10 @@ public abstract class Entity {
 
         for(Entity entity : Stage.getEntities()) {
             if(!(entity instanceof ProjectileEntity)) {
-                if(this instanceof PlayerEntity) {
+                if(this instanceof SharkEntity) {
                     if(this != entity && this.isCollidingWith(entity)) {
-                        if(entity instanceof SharkEntity) {
-                            this.damage(1, entity);
+                        if(entity instanceof PlayerEntity) {
+                            entity.damage(1, this);
                         }
                     }
                 }

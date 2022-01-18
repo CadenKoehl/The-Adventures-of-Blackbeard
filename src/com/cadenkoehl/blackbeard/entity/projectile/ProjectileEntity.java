@@ -31,13 +31,13 @@ public class ProjectileEntity extends Entity {
     }
 
     @Override
-    public int getHeight() {
-        return 5;
+    public int getWidth() {
+        return 15;
     }
 
     @Override
-    public int getWidth() {
-        return 5;
+    public int getHeight() {
+        return 15;
     }
 
     @Override
