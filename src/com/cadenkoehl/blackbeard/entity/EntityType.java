@@ -4,8 +4,11 @@ import com.cadenkoehl.blackbeard.entity.enemy.EnemyShipEntity;
 import com.cadenkoehl.blackbeard.entity.enemy.SharkEntity;
 import com.cadenkoehl.blackbeard.entity.enemy.SmartShipEntity;
 import com.cadenkoehl.blackbeard.entity.enemy.SpreadShipEntity;
+import com.cadenkoehl.blackbeard.entity.enemy.boss.BossEntity;
+import com.cadenkoehl.blackbeard.entity.enemy.boss.MaynardBossEntity;
 import com.cadenkoehl.blackbeard.entity.land.IslandEntity;
 import com.cadenkoehl.blackbeard.entity.player.PlayerEntity;
+import com.cadenkoehl.blackbeard.entity.projectile.BombEntity;
 import com.cadenkoehl.blackbeard.entity.projectile.ProjectileEntity;
 
 import java.util.ArrayList;
@@ -22,6 +25,8 @@ public class EntityType<E extends Entity> {
     public static final EntityType<SpreadShipEntity> SPREAD_SHIP = register(new EntityType<>("Spread Ship", SpreadShipEntity::new));
     public static final EntityType<SmartShipEntity> SMART_SHIP = register(new EntityType<>("Smart Ship", SmartShipEntity::new));
     public static final EntityType<SharkEntity> SHARK = register(new EntityType<>("Shark", SharkEntity::new));
+    public static final EntityType<MaynardBossEntity> ROBERT_MAYNARD = register(new EntityType<>("Robert Maynard", MaynardBossEntity::new));
+    public static final EntityType<BombEntity> BOMB = register(new EntityType<>("", BombEntity::new));
     public static final EntityType<IslandEntity> ISLAND = register(new EntityType<>("Island", IslandEntity::new));
 
     public static List<EntityType<?>> values() {

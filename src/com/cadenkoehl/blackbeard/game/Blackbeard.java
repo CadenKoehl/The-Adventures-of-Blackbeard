@@ -27,6 +27,7 @@ public class Blackbeard extends GameClient {
         this.wave = 0;
         this.enemyCount = 0;
         this.dayComplete = false;
+        this.chestOpen = false;
         WaveManager.nextWave();
         this.getWindow().setBackground(new Color(0x75CEFF));
         new Thread(this::startGameLoop, "Game thread").start();
@@ -41,6 +42,7 @@ public class Blackbeard extends GameClient {
         this.wave = 0;
         this.enemyCount = 0;
         this.dayComplete = false;
+        this.victory = false;
         WaveManager.nextWave();
         this.getWindow().setBackground(new Color(0x75CEFF));
         new Thread(this::startGameLoop, "Game thread").start();

@@ -14,14 +14,19 @@ public class Textures {
 
     public static Texture OCEAN_BACKGROUND;
     public static Texture PLAYER;
+    public static Texture ROBERT_MAYNARD;
     public static Texture ENEMY_SHIP;
     public static Texture ROCK;
+    public static Texture BOMB;
     public static Texture HP_HEART;
     public static Texture ITEM_HEART;
     public static Texture SHARK;
     public static Texture ISLAND;
     public static Texture CHEST_OPEN;
     public static Texture CHEST_CLOSED;
+    public static Texture ROBERT_MAYNARD_TITLE;
+    public static Texture THE_END;
+    public static Texture CREDITS;
 
     public static void initTextures() {
         System.out.println("Initializing textures...");
@@ -34,12 +39,17 @@ public class Textures {
         OCEAN_BACKGROUND = new Texture("resources/ocean_background.png", 1000, 1000);
         PLAYER = new Texture("resources/player_ship.png", 50, 75);
         ENEMY_SHIP = new Texture("resources/enemy_ship.png", 50, 75);
+        ROBERT_MAYNARD = new Texture("resources/enemy_ship.png", 200, 375);
         ROCK = new Texture("resources/rock.png", 20,20);
+        BOMB = new Texture("resources/bomb.png", 50, 50);
         HP_HEART = new Texture("resources/heart.png", 50, 50);
         ITEM_HEART = new Texture("resources/heart.png", 300, 300);
         SHARK = new Texture("resources/shark.png", 75, 50);
         ISLAND = new Texture("resources/island.png", 800, 400);
         CHEST_OPEN = new Texture("resources/chest_open.png", 1000, 1000);
         CHEST_CLOSED = new Texture("resources/chest_closed.png", 1000, 1000);
+        ROBERT_MAYNARD_TITLE = new Texture("resources/robert_maynard_title.png", 500, 250);
+        THE_END = new Texture("resources/the_end.png", 1000, 500);
+        CREDITS = new Texture("resources/credits.gif", 1000, 1000);
     }
 }

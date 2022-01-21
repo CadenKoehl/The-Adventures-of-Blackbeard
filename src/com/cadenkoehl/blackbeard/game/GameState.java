@@ -5,8 +5,8 @@ public enum GameState {
     INTRO,
     TITLE_SCREEN,
     DIFFICULTY_SELECT,
-    LOADING_SCREEN,
     GAME,
     TREASURE_BOX,
-    DEATH_SCREEN
+    DEATH_SCREEN,
+    CREDITS
 }

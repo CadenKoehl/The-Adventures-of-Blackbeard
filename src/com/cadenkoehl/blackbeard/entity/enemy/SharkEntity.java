@@ -1,6 +1,8 @@
 package com.cadenkoehl.blackbeard.entity.enemy;
 
 import com.cadenkoehl.blackbeard.entity.Entity;
+import com.cadenkoehl.blackbeard.entity.EntityType;
+import com.cadenkoehl.blackbeard.entity.projectile.ProjectileEntity;
 import com.cadenkoehl.blackbeard.physics.Direction;
 import com.cadenkoehl.blackbeard.render.Texture;
 import com.cadenkoehl.blackbeard.render.Textures;
@@ -18,7 +20,7 @@ public class SharkEntity extends SmartShipEntity {
     }
 
     @Override
-    public void launchProjectile(Direction direction) {
+    public void launchProjectile(Direction direction, EntityType<? extends ProjectileEntity> entity) {
 
     }
 }

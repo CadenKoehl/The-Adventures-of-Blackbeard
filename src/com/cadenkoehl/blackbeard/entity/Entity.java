@@ -54,6 +54,14 @@ public abstract class Entity {
         return pos.y + ((getTexture().getHeight() - height) / 2);
     }
 
+    public int getCenterX() {
+        return (pos.x + (getTexture().getWidth() / 2)) - 13;
+    }
+
+    public int getCenterY() {
+        return pos.y + (getTexture().getHeight() / 2);
+    }
+
     public int getHeight() {
         return getTexture().getHeight();
     }
@@ -87,7 +95,7 @@ public abstract class Entity {
 
     public void postSpawn() {}
 
-    public void launchProjectile(Direction direction) {
+    public void launchProjectile(Direction direction, EntityType<? extends ProjectileEntity> entity) {
 
         if(shotCooldown != 0) return;
 
@@ -119,7 +127,7 @@ public abstract class Entity {
             velocity.x = speed;
         }
 
-        ProjectileEntity projectile = GameClient.getInstance().getStage().spawnEntity(EntityType.PROJECTILE, pos);
+        ProjectileEntity projectile = GameClient.getInstance().getStage().spawnEntity(entity, pos);
         projectile.velocity.x = velocity.x;
         projectile.velocity.y = velocity.y;
         projectile.setSource(this);
@@ -191,7 +199,7 @@ public abstract class Entity {
         if(shotCooldown > 0) shotCooldown--;
 
         if(shotDirection != null) {
-            launchProjectile(shotDirection);
+            launchProjectile(shotDirection, EntityType.PROJECTILE);
         }
 
         checkCollisions();

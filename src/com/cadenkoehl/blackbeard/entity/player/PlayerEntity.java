@@ -34,6 +34,7 @@ public class PlayerEntity extends Entity {
     @Override
     public void damage(int amount, Entity damager) {
         if(damageTicks != 0) return;
+        if(GameClient.getInstance().victory) return;
         if(GameClient.getInstance().difficulty != 3) {
             damageTicks = 200 / GameClient.getInstance().difficulty;
         }
