@@ -40,6 +40,7 @@ public class Blackbeard extends GameClient {
         this.player = stage.spawnEntity(EntityType.PLAYER, new Vec2d((GameFrame.WIDTH / 2) - 50, 500));
         this.day = 1;
         this.wave = 0;
+        this.bossBar = null;
         this.enemyCount = 0;
         this.dayComplete = false;
         this.victory = false;
